@@ -1,10 +1,11 @@
 from django.urls import path,include
-from .views import TaskAPIView
+from .views import TaskViewSet,debug
 from rest_framework.routers import DefaultRouter
 
-# router = DefaultRouter()
-# router.register(r'task',Task)
+router = DefaultRouter()
+router.register(r'tasks',TaskViewSet)
 
 urlpatterns = [
-    path("task/",TaskAPIView.as_view())
+    path("api/",include(router.urls)),
+    path('debug/',debug)
 ]

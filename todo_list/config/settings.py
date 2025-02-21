@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
+from datetime import timedelta
 from pathlib import Path
 
 import rest_framework.pagination
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     "drf_yasg",
     'djoser',
+    'rest_framework_simplejwt',
 
     'tasks',
 ]
@@ -53,8 +55,16 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE':10,
     'DEFAULT_AUTHENTICATION_CLASSES':[
-        "rest_framework.authentication.BasicAuthentication",
-    ],
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # Token validity time
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'AUTH_HEADER_TYPES': ('Bearer',),  # Authorization: Bearer <token>
 }
 
 MIDDLEWARE = [
