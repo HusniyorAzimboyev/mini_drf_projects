@@ -30,7 +30,7 @@ A collection of small yet powerful projects 🐍 built with Django REST Framewor
 
 5. Open any project using:
    ```sh
-   cd <project_name>
+   cd mini_drf_projects
    ```
 
 4. Apply migrations:
