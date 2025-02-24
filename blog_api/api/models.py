@@ -6,3 +6,10 @@ class Author(models.Model):
     age = models.SmallIntegerField()
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+class Post(models.Model):
+    title = models.CharField(max_length=100)
+    body = models.TextField()
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    published = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.title
