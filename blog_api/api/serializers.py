@@ -9,4 +9,3 @@ class PostSer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = "__all__"
-#just comment
