@@ -128,3 +128,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+RAPIDAPI_KEY=os.environ.get("RAPIDAPI_KEY")
+RAPIDAPI_HOST=os.environ.get("RAPIDAPI_HOST")
