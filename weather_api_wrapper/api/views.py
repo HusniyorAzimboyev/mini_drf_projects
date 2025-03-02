@@ -1,18 +1,9 @@
 from rest_framework import views
 from rest_framework.response import Response
-from .models import Requests
-from .serializers import RequestSerializer
+from .services import get_weather
 
-class RequestView(views.APIView):
-    def get(self, request):
-        requests = Requests.objects.all()
-        serializer = RequestSerializer(requests, many=True)
-        return Response(serializer.data)
-
+class WeatherInfo(views.APIView):
     def post(self, request):
-        request = request.data.get('request')
-        response = request.data.get('response')
-        request = Requests(request=request, response=response)
-        request.save()
-        serializer = RequestSerializer(request)
-        return Response(serializer.data)
+        city = request.data.get("city")
+        current = get_weather(city=city)
+        return Response({"current_temp":f'{current}'})
