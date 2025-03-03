@@ -4,8 +4,8 @@ from django.conf import settings
 def get_weather(city):
 	url = f"https://open-weather13.p.rapidapi.com/city/{city}/EN"
 	headers = {
-		"x-rapidapi-key": settings["RAPIDAPI_KEY"],
-		"x-rapidapi-host": settings["RAPIDAPI_HOST"]
+		"x-rapidapi-key": settings.RAPIDAPI_KEY,
+		"x-rapidapi-host": settings.RAPIDAPI_HOST
 	}
 
 	response = requests.get(url, headers=headers).json()

@@ -7,3 +7,5 @@ class WeatherInfo(views.APIView):
         city = request.data.get("city")
         current = get_weather(city=city)
         return Response({"current_temp":f'{current}'})
+    def get(self,request):
+        return Response({"message":"Please send POST request and provide your city in it"})
