@@ -44,7 +44,7 @@ A collection of small yet powerful projects 🐍 built with Django REST Framewor
    ```
 
 ## Technologies Used
-- Django REST Framework (DRF) 🐍
+- Django REST Framework (DRF) 💡
 - Authentication: Token, JWT, or Session 🔑
 - SQLite/PostgreSQL 🗄️
 - Third-party integrations (e.g., Stripe, Twilio, etc.) 🌍
