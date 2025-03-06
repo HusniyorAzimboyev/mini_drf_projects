@@ -1,7 +1,9 @@
-from django.urls import path,include
-from .views import WeatherInfo,get_weather_info
+from django.urls import path
+from .views import Current_celcius,get_current_celsius_info
+from django.urls import path, re_path
+
 
 urlpatterns = [
-    path("current-weather/",WeatherInfo.as_view()),
-    path("current-weather/<city>",get_weather_info),
+    path("current-celsius/",Current_celcius.as_view()),
+    path("current-celsius/<city>",get_current_celsius_info),
 ]

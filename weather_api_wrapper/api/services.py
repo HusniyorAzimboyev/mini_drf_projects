@@ -1,6 +1,6 @@
 import requests
 from django.conf import settings
-
+import json
 def get_weather(city):
 	url = f"https://open-weather13.p.rapidapi.com/city/{city}/EN"
 	headers = {
@@ -11,4 +11,5 @@ def get_weather(city):
 	response = requests.get(url, headers=headers).json()
 	fahrenheit = response["main"]["temp"]
 	celsius = (fahrenheit - 32) * 5/9
+
 	return f'{round(celsius, 2)}°C'
