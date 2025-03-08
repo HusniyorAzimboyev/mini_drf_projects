@@ -39,3 +39,4 @@ class RequestHistory(views.APIView):
         if serializer.is_valid():
             return Response(serializer.data)
         return Response({"message":"Something went wrong("})
+    
