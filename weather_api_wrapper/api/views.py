@@ -1,10 +1,9 @@
-from rest_framework import views, decorators
+from rest_framework import views, decorators, viewsets,permissions
 from rest_framework.response import Response
 from .services import get_weather
 from .models import Requests_data
 from .serializers import RequestSerializer
 from rest_framework.pagination import PageNumberPagination
-from django.core.exceptions import ValidationError
 
 class CustomPagination(PageNumberPagination):
     page_size = 5
@@ -28,15 +27,9 @@ def get_current_celsius_info(request,city):
 
     return Response(response[0])
 
-class RequestHistory(views.APIView):
-    pagination_class = CustomPagination
-    def get(self,request):
-        # if ValidationError:
-        #     print(Requests_data.objects.all()[0])
-        #     return Response({"error":"Some data is not valid."},status=400)
-        queryset = Requests_data.objects.all()
-        serializer = RequestSerializer(data=queryset,many=True)
-        if serializer.is_valid():
-            return Response(serializer.data)
-        return Response({"message":"Something went wrong("})
+class RequestHistoryViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Requests_data.objects.all()
+    serializer_class = RequestSerializer
+
     
